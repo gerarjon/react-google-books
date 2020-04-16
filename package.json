@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Google Search API with react.js",
   "main": "server.js",
+  "homepage" : "https://reactgooglebooks-gs.herokuapp.com/",
   "proxy": "http://localhost:3001",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
