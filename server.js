@@ -1,28 +1,29 @@
 const express = require("express");
-const path = require("path");
+const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
+const bodyParser = require('body-parser');
+const routes = require('./routes');
 const app = express();
-const mongoose = require('mongoose');
 require('dotenv').config();
 
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// bodyParser, parses the request body to be a readable json format
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks")
-
-// Send every request to the React app
-// Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-
+// Mongoose connection
+const mongoDB = 'mongodb://localhost/googlebooks';
+mongoose.connect(mongoDB || process.env.MONGODB_URI, 
+  { 
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  });
 
 //Get the default connection
 const db = mongoose.connection;
@@ -32,6 +33,11 @@ db.once('open', () => console.log('connected to the database'));
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+// Add routes, both API and view
+app.use(routes)
+
+// Start the API server
 app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
+
