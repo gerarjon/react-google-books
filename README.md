@@ -1,29 +1,39 @@
-# Create React Express App
+# React Google Books
 
-## About This Boilerplate
+This web application uses the power of React and the Google Books API in order to search for and save books. When the user searches for a book title, they will be presented with books that best match their search and they can save the books to the Mongo database or they can view more information on the books from Google Books. When looking at saved books, they can remove the book from the collection or view the book.
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+[Deployed](https://reactgooglebooks-gs.herokuapp.com/)
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
 
-## Starting the app locally
+![Search](https://user-images.githubusercontent.com/47680567/79519663-50fc6280-8009-11ea-933c-df15ae2ac62b.gif)
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+![Saved](https://user-images.githubusercontent.com/47680567/79520044-76d63700-800a-11ea-9561-daedde458959.gif)
 
-```
-npm install
-```
+## Main techonologies
 
-This should install node modules within the server and the client folder.
+* [mongoose](https://mongoosejs.com/)
+* [Express](https://expressjs.com/)
+* [Materialize CSS](https://materializecss.com/)
+* [axios](https://www.npmjs.com/package/axios)
 
-After both installations complete, run the following command in your terminal:
+## Getting Started
 
-```
-npm start
-```
+Either download the zipped project from GitHub or clone the repo into your local machine.
+The rest of the steps need to be executed on the Terminal:
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Deployment (Heroku)
+## Available Scripts
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+## Author
+**Gerar Suaverdez** - [GitHub Profile](https://github.com/gerarjon)
