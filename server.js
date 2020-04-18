@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
 
 // Mongoose connection
 const mongoDB = 'mongodb://localhost/googlebooks';
-mongoose.connect(mongoDB || "mongodb://gerarjon:verde37arGG@ds113670.mlab.com:13670/heroku_sg7kmfl3", 
+mongoose.connect(mongoDB || process.env.MONGODB_URI, 
   { 
     useNewUrlParser: true,
     useUnifiedTopology: true,
