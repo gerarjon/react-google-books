@@ -17,7 +17,7 @@ class Saved extends Component {
 
     handleDelete = id => {
         API.deleteBook(id)
-            .then (res => this.componentDidMount())
+            .then(res => this.componentDidMount())
             .catch(err =>console.log(err));
     }
 
