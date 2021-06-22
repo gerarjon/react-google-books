@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Container from "../components/Container";
 import API from "../utils/API";
 import SavedResults from "../components/SavedResults";
+import M from 'materialize-css';
 import "../App.css";
 
 class Saved extends Component {
@@ -17,7 +18,10 @@ class Saved extends Component {
 
     handleDelete = id => {
         API.deleteBook(id)
-            .then(res => this.componentDidMount())
+            .then(
+                res => this.componentDidMount(),
+                M.toast({html: `Book was removed!`, displayLength: 1000}),
+            )
             .catch(err =>console.log(err));
     }
 

@@ -4,13 +4,14 @@ import Searchbar from '../components/Searchbar';
 import SearchResults from "../components/SearchResults";
 import "../App.css";
 import API from "../utils/API";
+import M from 'materialize-css'
+
 
 class Home extends Component {
     state = {
         search: '',
         results: [],
         error: '',
-        message: 'Your book is saved'
     }
 
     handleInputChange = (event) => {
@@ -38,14 +39,17 @@ class Home extends Component {
         } else {
             image = savedBooks.volumeInfo.imageLinks.smallThumbnail;
         }
-        API.saveBook({
+
+        const newBook = {
             title: savedBooks.volumeInfo.title,
             authors: savedBooks.volumeInfo.authors,
             description: savedBooks.volumeInfo.description,
             image: image,
             link: savedBooks.volumeInfo.previewLink
-        })
+        }
+        API.saveBook(newBook)
             .then(
+                M.toast({html: `${newBook.title} was saved!`, displayLength: 1000}),
                 console.log(this.state.message),
                 console.log(savedBooks)
             )

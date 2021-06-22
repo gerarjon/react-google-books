@@ -1,14 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
-const bodyParser = require('body-parser');
 const routes = require('./routes');
 const app = express();
 require('dotenv').config();
 
 // bodyParser, parses the request body to be a readable json format
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
